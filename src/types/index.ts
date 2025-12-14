@@ -12,3 +12,9 @@ export interface TodoContextType {
     editTodo: (id: string, newText: string) => void;
     clearCompleted: () => void;
 }
+export type Filter = 'all' | 'active' | 'completed';
+
+export interface FilterContextType {
+    filter: Filter;
+    setFilter: React.Dispatch<React.SetStateAction<Filter>>;
+}
