@@ -18,3 +18,10 @@ export interface FilterContextType {
     filter: Filter;
     setFilter: React.Dispatch<React.SetStateAction<Filter>>;
 }
+
+export type Theme = 'light' | 'dark';
+
+export interface ThemeContextType {
+    theme: Theme;
+    toggleTheme: () => void;
+}
