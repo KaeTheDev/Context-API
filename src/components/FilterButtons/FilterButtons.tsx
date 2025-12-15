@@ -1,39 +1,29 @@
 import React, { useContext } from "react";
 import FilterContext from "../../context/FilterContext";
+import ThemeContext from "../../context/ThemeContext";
 
 const FilterButtons: React.FC = () => {
-  const filterContext = useContext(FilterContext);
+  const { filter, setFilter } = useContext(FilterContext)!;
+  const { theme } = useContext(ThemeContext)!;
 
-  if (!filterContext) {
-    throw new Error("FilterButtons must be used within a FilterProvider");
-  }
-
-  const { filter, setFilter } = filterContext;
+  const getButtonClass = (name: string) => {
+    const isActive = filter === name;
+    if (theme === "light") {
+      return `px-4 py-2 rounded mr-2 ${
+        isActive ? "bg-blue-600 text-white" : "bg-gray-400 text-black hover:bg-gray-500"
+      }`;
+    } else {
+      return `px-4 py-2 rounded mr-2 ${
+        isActive ? "bg-blue-600 text-white" : "bg-gray-700 text-white hover:bg-gray-600"
+      }`;
+    }
+  };
 
   return (
-    <div className="flex flex-row mt-4 justify-center">
-      <button
-        onClick={() => setFilter("all")}
-        className={`text-white px-5 py-4 border mr-4 ${
-          filter === "all" ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-500"
-        }`}
-      >
-        All
-      </button>
-      <button 
-       onClick={() => setFilter("active")}
-      className= {`text-white px-5 py-4 border mr-4 ${
-        filter === "active" ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-500"
-      }`}>
-        Active
-      </button>
-      <button 
-        onClick={() => setFilter("completed")}
-      className={`text-white px-5 py-4 border mr-4 ${
-        filter === "completed" ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-500"
-      }`}>
-        Completed
-      </button>
+    <div className="flex mt-4 justify-center">
+      <button onClick={() => setFilter("all")} className={getButtonClass("all")}>All</button>
+      <button onClick={() => setFilter("active")} className={getButtonClass("active")}>Active</button>
+      <button onClick={() => setFilter("completed")} className={getButtonClass("completed")}>Completed</button>
     </div>
   );
 };
