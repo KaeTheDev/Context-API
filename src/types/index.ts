@@ -4,6 +4,10 @@ export interface Todo {
     completed: boolean;
 }
 
+export interface TodoProps {
+    todo: Todo;
+}
+
 export interface TodoContextType {
     todos: Todo[];
     addTodo: (text: string) => void;

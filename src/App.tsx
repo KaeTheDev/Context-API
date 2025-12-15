@@ -18,6 +18,7 @@ function App() {
           <TodoInput />
           <FilterButtons />
           </div>
+
         </ThemeProvider>
       </FilterProvider>
     </TodoProvider>
