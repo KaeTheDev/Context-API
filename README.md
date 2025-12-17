@@ -144,6 +144,6 @@ npm run dev
 
 *  components/ — Contains all React components used in the app.
 *  types/ — Shared TypeScript types/interfaces used across components.
-* utils / -
+*  utils / - Helper functions (e.g., localStorage utilities).
 
 ## Reflection
